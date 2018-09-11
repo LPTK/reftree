@@ -1,6 +1,6 @@
 val commonSettings = Seq(
-  scalaVersion := "2.11.11",
-  crossScalaVersions := Seq("2.11.11", "2.12.2"),
+  scalaVersion := "2.12.6",
+  crossScalaVersions := Seq("2.11.11", "2.12.6"),
   scalacOptions ++= Seq(
     "-feature", "-deprecation",
     "-Xlint", "-Xfatal-warnings"
@@ -44,6 +44,7 @@ val core = crossProject.in(file("core"))
   .settings(commonSettings)
   .settings(
     name := "reftree",
+    version := "1.2.0-FIX",
     libraryDependencies ++= Seq(
       "com.chuusai" %%% "shapeless" % "2.3.2",
       "com.lihaoyi" %%% "sourcecode" % "0.1.3",

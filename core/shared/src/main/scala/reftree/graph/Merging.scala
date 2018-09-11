@@ -58,7 +58,9 @@ object Merging {
   private def mergeNodeStatements(statements: Seq[Node], keepLeft: Boolean, mixColor: Boolean) = {
     val keeper = if (keepLeft) statements.head else statements.last
     val colors = statements.map(nodeLabelColors.getOption(_).getOrElse(List.empty))
-    if (colors.exists(_.isEmpty)) keeper else {
+    //val oneSize = colors.headOption.map(_.size).getOrElse(-1)
+    if (colors.exists(_.isEmpty) || colors.groupBy(_.size).size!=1) keeper else {
+    //if (colors.exists(_.size != oneSize)) keeper else {
       val mixedColors = colors.transpose.map { cs ⇒
         // we don’t want to mix the default transparent background in...
         val ignoreDefault = cs.map(_.toRgba).filter(_ != Primitives.defaultBackground)
